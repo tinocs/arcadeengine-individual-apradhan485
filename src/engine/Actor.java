@@ -13,9 +13,9 @@ public abstract class Actor extends ImageView{
 	}
 	
 	//This method is called every frame once start has been called on the world.
-	abstract void act(long now);
+	public abstract void act(long now);
 	//This method is called when an actor is added to the world and should be overridden in subclasses as desired.
-	void addedToWorld() {
+	public void addedToWorld() {
 		
 	}
 	//Returns The height of the current image of this actor.
@@ -29,7 +29,7 @@ public abstract class Actor extends ImageView{
 		List<A> touchingActors = new ArrayList<A>();
 		
 		for(A obj: possibleActors) {
-			if(obj.getBoundsInParent().intersects(this.getBoundsInParent())) {
+			if(obj != this && obj.getBoundsInParent().intersects(this.getBoundsInParent())) {
 				touchingActors.add(obj);
 			}
 		}

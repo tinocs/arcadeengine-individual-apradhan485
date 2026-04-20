@@ -99,7 +99,7 @@ public abstract class World extends Pane{
 				
 				for(Actor n: getObjects(Actor.class)) {
 					if(n.getWorld() != null) {
-						act(now);
+						n.act(now);
 					}
 				}
 				
@@ -115,6 +115,7 @@ public abstract class World extends Pane{
 	//Adds the given actor to the world and then calls the addedToWorld() method on the actor that was added.
 	public void add(Actor actor) {
 		getChildren().add(actor);
+		actor.addedToWorld();
 	}
 	//Returns a list of all the actors in the world of the given class.
 	 public <A extends Actor> java.util.List<A>	getObjects(java.lang.Class<A> cls){
@@ -146,7 +147,7 @@ public abstract class World extends Pane{
 	}
 	//Returns true if the given key is pressed and false otherwise.
 	public boolean	isKeyPressed(javafx.scene.input.KeyCode code) {
-		return false;
+		return keys.contains(code);
 	}
 	//Returns whether or not the world's timer is stopped
 	public boolean	isStopped() {
