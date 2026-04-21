@@ -47,7 +47,7 @@ public abstract class Actor extends ImageView{
 	}
 	//Returns The width of the current image of this actor.
 	public double	getWidth() {
-		return getBoundsInParent().getHeight();
+		return getBoundsInParent().getWidth();
 	}
 	//returns the world this actor is in, or null if it is not in a world.
 	public World getWorld() {

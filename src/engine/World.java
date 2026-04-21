@@ -22,12 +22,15 @@ public abstract class World extends Pane{
 	private Set<KeyCode> keys;
 	private boolean widthHasBeenSet;
 	private boolean heightHasBeenSet;
+	private boolean onDimensions;
 	
 	public World() {
 		widthHasBeenSet = false;
 		heightHasBeenSet = false;
 		keys = new HashSet<KeyCode>();
 		isRunning = false;
+		onDimensions = false;
+		
 		
 		widthProperty().addListener(new ChangeListener<Number>() {
 
@@ -38,7 +41,10 @@ public abstract class World extends Pane{
 					widthHasBeenSet = true;
 				}
 				if(widthHasBeenSet && heightHasBeenSet) {
-					onDimensionsInitialized();
+					if(onDimensions == false) {
+						onDimensionsInitialized();
+						onDimensions = true;
+					}
 				}
 			}
 			
@@ -54,7 +60,10 @@ public abstract class World extends Pane{
 					heightHasBeenSet = true;
 				}
 				if(widthHasBeenSet && heightHasBeenSet) {
-					onDimensionsInitialized();
+					if(onDimensions == false) {
+						onDimensionsInitialized();
+						onDimensions = true;
+					}
 				}
 			}
 			
