@@ -8,15 +8,18 @@ public class Ball extends Actor{
 	double dx;
 	double dy;
 	Image image;
-	double width = image.getWidth()/2;
-	double height = image.getHeight()/2;
+	double width;
+	double height;
 	
 	public Ball() {
 		String path = getClass().getClassLoader().getResource("breakoutresources/ball.png").toString();
 		image = new Image(path);
 		this.setImage(image);
+		width = image.getWidth()/2;
+		height = image.getHeight()/2;
 		dx = 4;
 		dy = 4;
+		
 	}
 	
 	@Override
@@ -36,6 +39,11 @@ public class Ball extends Actor{
 		if(this.getY() < height) {
 			dy = -dy;
 		}
+		
+		if(this.getOneIntersectingObject(Paddle.class) != null) {
+			dy = -dy;
+		}
+		
 	}
 
 }
