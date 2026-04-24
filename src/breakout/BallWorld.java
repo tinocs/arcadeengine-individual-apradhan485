@@ -5,6 +5,7 @@ import engine.World;
 public class BallWorld extends World{
 
 	Paddle paddle;
+	Score score;
 	public BallWorld() {
 		this.setPrefSize(400, 600);
 	}
@@ -33,6 +34,17 @@ public class BallWorld extends World{
 		paddle.setX(getWidth()/2);
 		paddle.setY(getHeight() - 4 * paddle.getImage().getHeight());
 		this.add(paddle);
+		
+		score = new Score();
+		score.setX(50);
+		score.setY(50);
+		getChildren().add(score);
+		
+		
+	}
+	
+	public Score getScore() {
+		return score;
 	}
 
 }

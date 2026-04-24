@@ -35,6 +35,9 @@ public class Ball extends Actor{
 		
 		if(this.getY() >= getWorld().getHeight() - height) {
 			dy = -dy;
+			BallWorld world = (BallWorld) getWorld();
+			Score score = world.getScore();
+			score.setScore(score.getScore() - 1000);
 		}
 		if(this.getY() < height) {
 			dy = -dy;
@@ -55,6 +58,9 @@ public class Ball extends Actor{
 				dx = -dx;
 				dy = -dy;
 			}
+			BallWorld world = (BallWorld) getWorld();
+			Score score = world.getScore();
+			score.setScore(score.getScore() + 100);
 			getWorld().remove(brick);
 			
 		
