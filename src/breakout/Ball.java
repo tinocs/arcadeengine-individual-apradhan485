@@ -44,6 +44,22 @@ public class Ball extends Actor{
 			dy = -dy;
 		}
 		
+		if(this.getOneIntersectingObject(Brick.class) != null) {
+			Brick brick = this.getOneIntersectingObject(Brick.class);
+			if(this.getX() >= brick.getX() && this.getX() <= brick.getX() + brick.getImage().getWidth()) {
+				dy = -dy;
+			}
+			if(this.getY() >= brick.getY() && this.getY() <= brick.getY() + brick.getImage().getHeight()) {
+				dx = -dx;
+			}else {
+				dx = -dx;
+				dy = -dy;
+			}
+			getWorld().remove(brick);
+			
+		
+		}
+		
 	}
 
 }
